@@ -1,0 +1,221 @@
+/* ================================================
+   ESTILOS PARA LA PÁGINA DE PROYECTOS
+   ================================================ */
+
+/* Project Filter */
+.project-filter {
+    padding-bottom: 0;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Projects Grid */
+.projects-grid {
+    padding-top: var(--spacing-xl);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.project-card {
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    display: block;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.project-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: 1;
+}
+
+.project-card:hover .project-image::before {
+    opacity: 1;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-info {
+    padding: var(--spacing-lg);
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    transition: color var(--transition-normal);
+}
+
+.project-card:hover .project-info h3 {
+    color: var(--primary);
+}
+
+.project-info p {
+    color: var(--secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.project-tag {
+    padding: 4px 10px;
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: var(--border-radius-sm);
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.project-links a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: var(--border-radius-sm);
+}
+
+/* Project Filtering Animation */
+.project-card {
+    transition: opacity var(--transition-normal), transform var(--transition-normal), height var(--transition-normal);
+}
+
+.project-card.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Dark Theme Styles */
+body.dark-theme .project-card {
+    background-color: #1e1e1e;
+}
+
+body.dark-theme .project-info p {
+    color: #aaa;
+}
+
+body.dark-theme .project-tag {
+    background-color: rgba(37, 99, 235, 0.2);
+}
+
+body.dark-theme .filter-btn {
+    color: var(--light);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filter-buttons {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: var(--spacing-sm);
+        justify-content: flex-start;
+    }
+
+    .filter-btn {
+        padding: 6px 15px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-image {
+        height: 200px;
+    }
+
+    .project-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .project-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
