@@ -185,10 +185,21 @@
 /* Dark mode compatibility */
 body.dark-theme .skill-tag {
     background-color: rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
 }
 
 body.dark-theme .skill-tag:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .skills-category {
+    background-color: #1e1e1e;
+}
+
+body.dark-theme .skills-category h3 {
+    color: #60a5fa;
 }
 
 /* Education Section */
